@@ -1,0 +1,20 @@
+<div class="main-title-sec">
+    <div class="row">
+         <div class="col-md-3 column">
+              <div class="heading-profile">
+                   <h2 *ngIf="title !== null && title !== undefined">{{ title }}</h2>
+                   <span *ngIf="subtitle !== null && subtitle !== undefined">{{ subtitle }}</span>
+              </div>
+         </div>
+         <div class="col-md-9 column">
+              <div id="reportrange" class="date-range">
+                <i class="fa fa-calendar-o"></i>
+                <span></span> <b class="caret"></b>
+              </div>
+              <div class="quick-btn-title">
+                   <a title=""><i class="fa fa-plus"></i> Nova Tarefa</a>
+                   <a title=""><i class="fa fa-cloud-upload"></i> Relatórios</a>
+              </div>
+         </div>
+    </div>
+</div>

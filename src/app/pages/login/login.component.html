@@ -1,0 +1,39 @@
+<div class="go-full">
+  <div class="account-sec lockscreen">
+       <div class="logo">
+          <a title=""><i class="fa fa-bullseye"></i> Aimbra Hunger</a>
+       </div>
+
+       <div *ngIf="hasUser()">
+         <p>Olá <strong>{{ user.name }}</strong>, Digite sua senha para entrar no sistema!</p>
+         <div class="text-center">
+           <div class="user-lock-avatar">
+                <span><img [src]="user.image" alt=""></span>
+                <h3 class="text-uppercase">{{ user.name }}</h3>
+                <i>Login automático desabilitado por segurança</i>
+           </div><!-- User Lock Avatar -->
+         </div>
+       </div>
+
+       <form class="account-form" *ngIf="!hasUser()">
+            <fieldset>
+                <i class="fas fa-user"></i>
+                <input class="form-control" type="text" placeholder="Nome do usuário">
+            </fieldset>
+            <button class="btn btn-info medium" type="button" (click)="searchUser()">Próximo</button>
+          </form>
+
+          <form class="account-form" *ngIf="hasUser()">
+            <fieldset>
+              <i class="fas fa-key"></i>
+              <input type="password" placeholder="Digite a senha">
+            </fieldset>
+            <button class="btn btn-info medium" type="button" (click)="login()">Fazer login</button>
+       </form>
+
+       <ul class="account-feature">
+            <li><a  title="">Fazer Login com uma conta diferente</a></li>
+            <li><a title="">Solicitar uma nova conta</a></li>
+       </ul>
+  </div><!-- Lockscreen -->
+</div>

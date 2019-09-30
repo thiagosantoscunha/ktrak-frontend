@@ -1,0 +1,14 @@
+.side-menus {
+  ul.parent-menu {
+    li {
+      a {
+        color: #c5c5c5;
+        &:hover {
+          color: aquamarine;
+          text-decoration: none;
+        }
+        cursor: pointer;
+      }
+    }
+  }
+}

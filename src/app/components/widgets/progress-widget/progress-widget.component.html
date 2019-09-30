@@ -1,0 +1,14 @@
+<div class="widget">
+    <div class="quick-report-widget style2 white">
+         <i class="fa fa-area-chart"></i>
+         <span *ngIf="hasValue(model?.title)">{{ model.title }}</span>
+         <h4 *ngIf="hasValue(model?.quantity)">{{ model.quantity }}</h4>
+         <div class="progress">
+       <div class="progress-bar {{ model.color }}-bg" role="progressbar" aria-valuemin="0" aria-valuemax="100" [style.width.px]="model.statusProgress">
+          <span [hidden]="true">{{model.statusProgress}}%</span>
+       </div>
+   </div>
+         <h5 *ngIf="hasValue(model?.total)">Total de refeições este mês: {{ model.total }}</h5>
+    </div>
+</div><!-- Widget -->
+
