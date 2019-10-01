@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { NavigationModule } from './shared/navigation/navigation.module';
 import { PagesModule } from './pages/pages.module';
 import { MenuSidebarModule } from './shared/menu-sidebar/menu-sidebar.module';
-import { ClientRoutingModule } from './pages/clients/clients-routing.module';
 
 @NgModule({
   declarations: [
