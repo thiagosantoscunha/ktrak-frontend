@@ -17,14 +17,15 @@ export class ClientService {
 
   public getAll(): Observable<ClientModel[]> {
     const headers: HttpHeaders = new HttpHeaders();
-    headers.append('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3');
-    headers.append('Accept-Encoding', 'gzip, deflate, br');
-    headers.append('Content-Type', 'application/json');
     return this.http.get<ClientModel[]>(this.uri, { headers });
   }
 
   public getById(id: number): Observable<ClientModel> {
     return this.http.get<ClientModel>(`${this.uri}/${id}`);
+  }
+
+  public insert(client: ClientModel): Observable<any> {
+    return this.http.post<any>(`${this.uri}`, { cliente: client });
   }
 
   public remove(id: number): Observable<any> {

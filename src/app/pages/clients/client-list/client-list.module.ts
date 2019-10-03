@@ -7,6 +7,7 @@ import { HeaderContentPageModule } from 'src/app/shared/header-content-page/head
 import { ClientFormModule } from '../client-form/client-form.module';
 import { DataTableModule } from 'src/app/components/data-table/data-table.module';
 import { ClientService } from 'src/app/services/client.service';
+import { ClientListWidgetModule } from 'src/app/components/widgets/client-list-widget/client-list-widget.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ClientService } from 'src/app/services/client.service';
     ClientRoutingModule,
     ClientFormModule,
     HeaderContentPageModule,
-    DataTableModule
+    DataTableModule,
+    ClientListWidgetModule
   ],
   providers: [ClientService]
 })

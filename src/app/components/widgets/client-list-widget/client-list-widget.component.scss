@@ -1,0 +1,21 @@
+.client-list {
+  li {
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      border-radius: 10px;
+      background-color: rgb(250, 251, 252);
+    }
+    span {
+      margin-top: 3px;
+    }
+    .client-info {
+      p {
+        line-height: 0;
+      }
+    }
+  }
+  .switch {
+    margin-top: 17px;
+  }
+}

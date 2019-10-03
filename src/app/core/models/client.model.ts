@@ -5,6 +5,10 @@ export class ClientModel {
   public dataNascimento: Date;
   public dataAtivacao: Date;
   public dataDesativacao: Date;
-  public tipoClient: string;
+  public tipoCliente: TipoClient;
   public ativo: boolean;
+}
+
+enum TipoClient {
+  FUNCIONARIO, ALUNO, VISITANTE
 }

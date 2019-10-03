@@ -1,11 +1,29 @@
 <app-header-content-page title="Novo Cliente" subtitle="Preencha os campos para adicionar"></app-header-content-page>
 
-<div class="inline-form">
-    <label class="c-label">Nome</label><input class="input-style" type="text" placeholder="Digite o nome do cliente">
-</div>
-<div class="inline-form">
-    <label class="c-label">Número</label><input class="input-style" type="text" placeholder="Digite o número">
-</div>
-<div class="inline-form">
-    <label class="c-label">Data de nascimento</label><input class="input-style" type="date" placeholder="Digite a data de nascimento">
-</div>
+<form [formGroup]="formClient">
+  <div class="inline-form mt-5">
+      <label class="c-label">Nome</label>
+      <input class="input-style" type="text" placeholder="Digite o nome do cliente" formControlName="nome">
+  </div>
+  <div class="inline-form">
+      <label class="c-label">Número</label>
+      <input class="input-style" type="text" placeholder="Digite o número" formControlName="numero">
+  </div>
+  <div class="inline-form">
+      <label class="c-label">Data de nascimento</label>
+      <input class="input-style" type="date" placeholder="Digite a data de nascimento" formControlName="dataNascimento">
+  </div>
+  <div class="inline-form">
+      <label class="c-label">Tipo Cliente</label>
+      <select class="input-style" formControlName="tipoCliente">
+        <option value="ALUNO">Aluno</option>
+        <option value="FUNCIONARIO">Funcionario</option>
+        <option value="VISITANTE">Visitante</option>
+      </select>
+  </div>
+  <div class="text-right">
+    <button class="btn btn-primary mt-5" type="button" (click)="save()" [disabled]="!formIsValid()">
+      Salvar
+    </button>
+  </div>
+</form>

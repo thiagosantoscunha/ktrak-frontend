@@ -1,0 +1,37 @@
+<div class="widget" *ngIf="data !== null">
+  <div class="widget-title">
+    <h3>Lista de clientes</h3>
+    <span>{{ sizeData() }} clientes</span>
+    <div class="widget-controls">
+      <span class="close-content"><i class="fa fa-trash-o"></i></span>
+      <span class="expand-content"><i class="fa fa-expand"></i></span>
+      <span class="refresh-content"><i class="fa fa-refresh"></i></span>
+    </div><!-- Widget Controls -->
+  </div>
+  <div class="our-clients-sec">
+    <div id="searchDir">
+      <form class="filterform"><input class="filterinput" type="text" placeholder="Pesquisar um cliente" (keydown.enter)="search($event)"></form>
+    </div>
+    <div>
+      <ul class="client-list">
+        <li *ngFor="let d of data" (click)="edit(d)">
+          <span class="user-status online red-bg">J</span>
+          <div class="client-info">
+            <div class="d-flex flex-row justify-content-between">
+              <div>
+                <h3><a href="#" title="">{{ d.nome }}</a></h3>
+                <p>{{ d.tipoCliente }}</p>
+              </div>
+              <div>
+                <div class="switch">
+                  <input type="checkbox" class="switch-input" [checked]="d.ativo">
+                  <label class="switch-label">Switch</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- Our Clients Sec -->
+  </div>

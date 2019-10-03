@@ -1,7 +1,12 @@
 <app-header-content-page title="Lista de clientes" subtitle="Clique no cliente para emitir uma ação"></app-header-content-page>
 
-
-<!-- Lista de clientes -->
+<div class="row">
+  <div class="col-8">
+    <app-client-list-widget [data]="clients"></app-client-list-widget>
+  </div>
+</div>
+<!--
+<!-- Lista de clientes
 <div class="widget white">
   <div>
        <table class="table table-hover">
@@ -18,12 +23,9 @@
               <tr *ngFor="let c of clients">
                  <td class="lalign">{{ c.numero }}</td>
                  <td class="lalign">{{ c.nome }}</td>
-                 <td class="lalign">{{ c.tipoClient }}</td>
+                 <td class="lalign">{{ c.tipoCliente }}</td>
                  <td>
-                  <div class="switch">
-                    <input type="checkbox" class="switch-input" [checked]="c.ativo">
-                    <label class="switch-label">Switch</label>
-                  </div>
+
                 </td>
                  <td>
                    <button class="btn btn-primary">Editar</button>
@@ -35,4 +37,4 @@
   </div>
 </div>
 
-
+ -->

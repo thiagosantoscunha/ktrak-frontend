@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 input[type=text],
-input[type=password]
+input[type=password],
+input[type=date],
+select
 {
   outline:none
 }
@@ -96,4 +98,19 @@ $switch-knob-checked-left: $switch-knob-width;
   &:after {
     left: $switch-knob-checked-left;
   }
+}
+
+.inline-form {
+  label {
+    right: unset;
+    left: 10px;
+  }
+  select {
+    height: 65px;
+    padding: 0 27px;
+  }
+}
+
+.inline-form > input, .inline-form > textarea {
+  padding: 20px 30px;
 }
