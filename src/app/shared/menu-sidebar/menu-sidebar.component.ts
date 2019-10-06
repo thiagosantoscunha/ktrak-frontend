@@ -22,7 +22,4 @@ export class MenuSidebarComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDropdown(e: MouseEvent) {
-  }
-
 }

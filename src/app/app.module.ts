@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavigationModule } from './shared/navigation/navigation.module';
 import { PagesModule } from './pages/pages.module';
 import { MenuSidebarModule } from './shared/menu-sidebar/menu-sidebar.module';
+import { FooterModule } from './shared/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MenuSidebarModule } from './shared/menu-sidebar/menu-sidebar.module';
     ReactiveFormsModule,
     PagesModule,
     MenuSidebarModule,
-    HttpClientModule
+    HttpClientModule,
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

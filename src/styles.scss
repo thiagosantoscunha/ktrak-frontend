@@ -3,9 +3,10 @@
 input[type=text],
 input[type=password],
 input[type=date],
-select
+select,
+input.form-control
 {
-  outline:none
+  outline:none !important
 }
 /**
  * Demo Styles

@@ -14,6 +14,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogged();
+    const user = window.localStorage.getItem('user');
+    if (user === null || user === undefined) {
+      this.showSidebar = false;
+    }
   }
 
   isLogged(): boolean {

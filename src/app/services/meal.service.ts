@@ -4,6 +4,7 @@ import { ClientModel } from '../core/models/client.model';
 import { Observable } from 'rxjs';
 import { MealModel } from '../core/models/meal.model';
 import { HttpClient } from '@angular/common/http';
+import { tryParse } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,12 @@ export class MealService {
   }
 
   getByData(date: Date): Observable<MealModel[]> {
-    return this.http.post<MealModel[]>(`${this.uri}/buscaPorData`, { data: date.toString() });
+    return this.http.post<MealModel[]>(`${this.uri}/buscaPorData`, { data: date });
   }
 
-  public insert(client: ClientModel): Observable<MealModel> {
-    return this.http.post<MealModel>(this.uri, { id: client.id });
+  public insert(clienteNumero: string): Observable<MealModel> {
+    const numero: number = parseInt(clienteNumero, 0);
+    console.log(numero);
+    return this.http.post<MealModel>(this.uri, { clienteNumero: numero });
   }
 }

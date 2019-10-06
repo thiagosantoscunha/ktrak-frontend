@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MealService } from 'src/app/services/meal.service';
+import { MealModel } from 'src/app/core/models/meal.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-refeicao-list',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RefeicaoListComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  public meals: MealModel[];
+
+  @Input()
+  public showHeaderPage = true;
+
+  @Input()
+  public darkMode = false;
+
+  @Input()
+  public showSearchForm = true;
+
+  constructor(private service: MealService) {}
 
   ngOnInit() {
+    if (this.meals !== null && this.meals !== undefined) {
+      this.getByData();
+    }
+  }
+
+  getByData(): void {
+    this.service.getByData(new Date('2019-09-30')).subscribe((meals: MealModel[]) => {
+      if (meals) {
+        this.meals = meals;
+        console.log(this.meals);
+      }
+    }, (error: HttpErrorResponse) => {
+        alert(error.error.message);
+    });
   }
 
 }

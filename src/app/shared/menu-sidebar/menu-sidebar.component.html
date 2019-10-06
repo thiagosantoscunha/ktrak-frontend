@@ -12,6 +12,9 @@
              <span class="text-uppercase">Opções principais</span>
              <nav>
                   <ul class="parent-menu">
+                       <li appDropdown class="menu-item-has-children" routerLink="/registrator">
+                            <a><i class="fa fa-desktop"></i><span>Registrador</span></a>
+                       </li>
                        <li appDropdown class="menu-item-has-children">
                             <a><i class="fa fa-desktop"></i><span>Cliente</span></a>
                             <ul>
@@ -20,10 +23,10 @@
                             </ul>
                        </li>
                        <li appDropdown class="menu-item-has-children">
-                            <a><i class="fa fa-desktop"></i><span>Relatórios</span></a>
+                            <a><i class="fa fa-desktop"></i><span>Refeição</span></a>
                             <ul>
-                                 <li><a href="index.html" >Lista</a></li>
-                                 <li><a href="index2.html" >Criar</a></li>
+                                 <li><a routerLink="/refeicoes">Lista</a></li>
+                                 <li><a routerLink="/refeicoes/new">Criar</a></li>
                             </ul>
                        </li>
                   </ul>

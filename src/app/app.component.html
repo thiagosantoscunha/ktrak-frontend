@@ -1,6 +1,15 @@
-<app-navigation (showSidebar)="viewSidebar($event)"></app-navigation>
-<app-menu-sidebar *ngIf="isLogged()" [showSidebar]="showSidebar"></app-menu-sidebar>
-<div class="main-content" [class.menu-slide]="showSidebar">
+
+<div *ngIf="isLogged()">
+  <app-navigation (showSidebar)="viewSidebar($event)"></app-navigation>
+  <app-menu-sidebar *ngIf="isLogged()" [showSidebar]="showSidebar"></app-menu-sidebar>
+  <div class="main-content" [class.menu-slide]="showSidebar">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div *ngIf="!isLogged()">
+  <app-navigation></app-navigation>
   <router-outlet></router-outlet>
+  <app-footer></app-footer>
 </div>
 

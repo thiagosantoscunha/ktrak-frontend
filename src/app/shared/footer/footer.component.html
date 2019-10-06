@@ -1,0 +1,28 @@
+<footer class="footer d-flex flex-row justify-content-between container-fluid">
+  <div>
+    <p class="mt-2">Aimbra 2019. Todos os Direitos Reservados.</p>
+  </div>
+  <div>
+      <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" (click)="openSobreModal()">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="openAtendimentoModal()">Suporte</a>
+          </li>
+        </ul>
+  </div>
+</footer>
+<app-modal
+  [show]="showModalSobre"
+  [title]="'Sobre a Aimbra'"
+  [description]="'Uma breve descrição sobre a Aimbra'"></app-modal>
+<app-modal
+  [show]="showModalSuporte"
+  [title]="'Atendimento e suporte'"
+  [description]="'Entre em contato através do whatsapp: (22) 99789-1865 ou email aimbrasoftwares@gmail.com'"
+  ></app-modal>
+
+
+
+

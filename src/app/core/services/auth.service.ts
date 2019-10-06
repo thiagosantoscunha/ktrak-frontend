@@ -8,6 +8,18 @@ export class AuthService {
   constructor() { }
 
   public isLogged(): boolean {
-    return true;
+    return this.getUser() !== null && this.getUser() !== undefined;
+  }
+
+  public login() {
+    window.localStorage.setItem('user', 'thiago');
+  }
+
+  public logout() {
+    window.localStorage.removeItem('user');
+  }
+
+  public getUser() {
+    return window.localStorage.getItem('user');
   }
 }

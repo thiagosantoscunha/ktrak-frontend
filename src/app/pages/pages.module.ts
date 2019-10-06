@@ -5,6 +5,7 @@ import { LoginModule } from './login/login.module';
 import { ClientRoutingModule } from './clients/clients-routing.module';
 import { ClientFormModule } from './clients/client-form/client-form.module';
 import { ClientListModule } from './clients/client-list/client-list.module';
+import { RegistratorModule } from './registrator/registrator.module';
 
 @NgModule({
   declarations: [],
@@ -12,6 +13,7 @@ import { ClientListModule } from './clients/client-list/client-list.module';
     CommonModule,
     HomeModule,
     LoginModule,
+    RegistratorModule
   ]
 })
 export class PagesModule { }

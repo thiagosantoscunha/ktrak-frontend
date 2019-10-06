@@ -1,0 +1,27 @@
+p {color: white}
+
+* {
+  background: #262935
+}
+
+footer {
+  border: {
+    top: 1px solid aquamarine;
+  }
+  padding: {
+    top: 20px;
+  }
+}
+
+.nav {
+  .nav-item {
+    .nav-link {
+      color: white;
+      background: unset;
+      &:hover {
+        color: aquamarine;
+        cursor: pointer;
+      }
+    }
+  }
+}
