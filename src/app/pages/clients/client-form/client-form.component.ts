@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/services/client.service';
 import { ClientModel } from 'src/app/core/models/client.model';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -19,7 +19,8 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
   constructor(
     private route: ActivatedRoute,
     private service: ClientService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -37,11 +38,11 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
 
   clientForm() {
     this.formClient = this.formBuilder.group({
-      nome: this.formBuilder.control(this.client.nome, [Validators.required]),
-      numero: this.formBuilder.control(this.client.numero, [Validators.required]),
-      dataNascimento: this.formBuilder.control(this.client.dataNascimento, [Validators.required]),
-      tipoCliente: this.formBuilder.control(this.client.tipoCliente, [Validators.required]),
-      ativo: this.formBuilder.control(this.client.ativo, [Validators.required]),
+      nome: this.formBuilder.control('', [Validators.required]),
+      numero: this.formBuilder.control('', [Validators.required]),
+      dataNascimento: this.formBuilder.control('', [Validators.required]),
+      tipoCliente: this.formBuilder.control('', [Validators.required]),
+      ativo: this.formBuilder.control('', [Validators.required]),
     });
   }
 
@@ -50,6 +51,13 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
       if (c) {
         this.client = c;
         console.log(this.client);
+        this.formClient.patchValue({
+          nome: this.client.nome,
+          numero: this.client.numero,
+          dataNascimento: this.client.dataNascimento,
+          tipoCliente: this.client.tipoCliente,
+          ativo: this.client.ativo,
+        });
       }
     }, (error: HttpErrorResponse) => {
       console.log(error);
@@ -57,14 +65,14 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
   }
 
   save() {
-    this.client = new ClientModel();
     this.client.nome = this.formClient.value.nome;
     this.client.numero = parseInt(this.formClient.value.numero, 0);
     this.client.dataNascimento = this.formClient.value.dataNascimento;
     this.client.tipoCliente = this.formClient.value.tipoCliente;
     this.client.ativo = this.formClient.value.ativo;
 
-    if (this.client.id) {
+    if (this.client.id !== null && this.client.id !== undefined) {
+      console.log('modo update');
       this.update();
     } else {
       this.create();
@@ -72,6 +80,9 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
   }
 
   update() {
+    this.service.update(this.client).subscribe((client) => {
+      this.router.navigate(['/clients']);
+    });
   }
 
   create() {

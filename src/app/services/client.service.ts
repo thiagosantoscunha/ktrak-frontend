@@ -29,6 +29,10 @@ export class ClientService {
     return this.http.post<any>(`${this.uri}`, cliente);
   }
 
+  public update(cliente: ClientModel): Observable<any> {
+    return this.http.put<any>(`${this.uri}`, cliente);
+  }
+
   public remove(id: number): Observable<any> {
     return this.http.delete<any>(`${this.uri}/${id}`);
   }

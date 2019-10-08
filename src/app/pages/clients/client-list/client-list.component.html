@@ -4,7 +4,7 @@
   <div class="col-12 mt-5">
       <div id="searchDir">
           <form class="filterform">
-            <input class="filterinput" type="text" placeholder="Pesquisar um cliente" (keydown.enter)="search($event)">
+            <input class="filterinput" type="text" placeholder="Pesquisar um cliente" (keydown.enter)="search($event)" (keyup)="search($event)">
           </form>
     </div>
   </div>

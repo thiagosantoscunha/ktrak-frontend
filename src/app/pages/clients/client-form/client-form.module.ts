@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ClientFormComponent } from './client-form.component';
 import { HeaderContentPageModule } from 'src/app/shared/header-content-page/header-content-page.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HeaderContentPageModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class ClientFormModule { }
