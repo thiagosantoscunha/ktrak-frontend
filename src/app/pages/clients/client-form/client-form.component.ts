@@ -72,7 +72,6 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
     this.client.ativo = this.formClient.value.ativo;
 
     if (this.client.id !== null && this.client.id !== undefined) {
-      console.log('modo update');
       this.update();
     } else {
       this.create();
@@ -88,7 +87,7 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
   create() {
     this.service.insert(this.client).subscribe((result) => {
       if (result !== null || result !== undefined) {
-        console.log(result);
+        this.router.navigate(['/clients']);
       }
     }, (error) => {
         console.error(error);
