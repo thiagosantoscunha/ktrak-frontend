@@ -1,7 +1,17 @@
 <app-header-content-page title="Lista de clientes" subtitle="Clique no cliente para emitir uma ação"></app-header-content-page>
 
 <div class="row">
-  <div class="col-8">
+  <div class="col-12 mt-5">
+      <div id="searchDir">
+          <form class="filterform">
+            <input class="filterinput" type="text" placeholder="Pesquisar um cliente" (keydown.enter)="search($event)">
+          </form>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
     <app-client-list-widget [data]="clients"></app-client-list-widget>
   </div>
 </div>

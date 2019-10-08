@@ -7,7 +7,7 @@ import { RegistratorComponent } from './pages/registrator/registrator.component'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/registrator',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {

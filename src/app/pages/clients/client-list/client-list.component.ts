@@ -28,4 +28,14 @@ export class ClientListComponent implements OnInit {
     });
   }
 
+  search(event) {
+    event.preventDefault();
+    const criteria = event.target.value;
+    this.clientService.search(criteria).subscribe((clients: ClientModel[]) => {
+      this.clients = clients;
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
 }

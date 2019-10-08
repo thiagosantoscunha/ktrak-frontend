@@ -21,6 +21,10 @@ export class RegistratorComponent implements OnInit {
   meals: MealModel[];
   mensagem: string;
 
+  public cafe = 'LANCHE DA MANHÃ';
+  public almoco = 'LANCHE DA TARDE';
+  public lanche = 'ALMOÇO';
+
   @ViewChild('modalMessage', { read: true, static: true })
   public modalMessage: ModalComponent;
 
@@ -38,7 +42,7 @@ export class RegistratorComponent implements OnInit {
   }
 
   getMealByData() {
-    this.mealService.getByData(new Date('2019/10/06')).subscribe((meals: MealModel[]) => {
+    this.mealService.getByData(new Date()).subscribe((meals: MealModel[]) => {
       if (meals) {
         this.meals = meals;
       }
@@ -54,9 +58,7 @@ export class RegistratorComponent implements OnInit {
       if (result) {
         this.meal = result;
         this.mensagem = null;
-        if (this.meals !== null) {
-          this.meals.unshift(this.meal);
-        }
+        this.getMealByData();
       }
     }, (error: HttpErrorResponse) => {
         if (error.status === 400) {
@@ -79,6 +81,25 @@ export class RegistratorComponent implements OnInit {
     this.modalMessage.show = true;
     this.modalMessage.title = title;
     this.modalMessage.description = message;
+  }
+
+  sizeType(tipo: string): number {
+    if (this.meals !== null && this.meals !== undefined) {
+      switch (tipo) {
+        case this.cafe:
+          return this.meals.filter(
+            (v) => v.tipoRefeicao.nome === this.cafe
+          ).length;
+        case this.almoco:
+          return this.meals.filter(
+            (v) => v.tipoRefeicao.nome === this.almoco
+          ).length;
+        case this.lanche:
+          return this.meals.filter(
+            (v) => v.tipoRefeicao.nome === this.lanche
+          ).length;
+      }
+    }
   }
 
 }

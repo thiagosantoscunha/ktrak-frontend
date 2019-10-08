@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ClientService {
 
+
   public uri: string;
 
   constructor(private http: HttpClient) {
@@ -24,8 +25,8 @@ export class ClientService {
     return this.http.get<ClientModel>(`${this.uri}/${id}`);
   }
 
-  public insert(client: ClientModel): Observable<any> {
-    return this.http.post<any>(`${this.uri}`, { cliente: client });
+  public insert(cliente: ClientModel): Observable<any> {
+    return this.http.post<any>(`${this.uri}`, cliente);
   }
 
   public remove(id: number): Observable<any> {
@@ -36,6 +37,14 @@ export class ClientService {
     const params: HttpParams = new HttpParams();
     params.append('numero', id.toString());
     return this.http.get<ClientModel>(`${this.uri}/busca`, { params });
+  }
+
+  search(criteria: any): Observable<ClientModel[]> {
+    return this.http.post<ClientModel[]>(`${this.uri}/filtro`, {
+      ativo: true,
+      nomeParcial: criteria,
+      tipoCliente: 'ALUNO',
+    });
   }
 
 }

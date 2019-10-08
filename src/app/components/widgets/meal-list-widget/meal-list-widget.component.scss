@@ -4,7 +4,8 @@
     cursor: pointer;
     &:hover {
       border-radius: 10px;
-      background-color: rgb(250, 251, 252);
+      background-color: #151822;
+      color: black !important;
     }
     span {
       margin-top: 3px;
@@ -15,7 +16,7 @@
       }
       h3.title {
         font: {
-          size: 1.5rem;
+          size: 1.3rem;
         }
       }
     }
@@ -29,20 +30,30 @@
   height: 400px;
   overflow-y: scroll;
 }
-
+.widget {
+  border: 0 !important;
+  padding: {
+    left: 40px;
+  }
+  margin: {
+    top: -20px;
+  }
+}
 .widget-dark {
   background: transparent;
   color: antiquewhite;
   h3 {
-    color: antiquewhite;
+    color: rgb(196, 196, 196);
   }
   li {
     ul {
       h3 {
-        color: antiquewhite !important;
+        color: rgb(131, 131, 131) !important;
       }
     }
   }
   border-radius: 3px;
   border: 1px solid rgb(82, 81, 81);
 }
+
+

@@ -25,13 +25,11 @@ export class RefeicaoListComponent implements OnInit {
   constructor(private service: MealService) {}
 
   ngOnInit() {
-    if (this.meals !== null && this.meals !== undefined) {
-      this.getByData();
-    }
+    this.getByData();
   }
 
   getByData(): void {
-    this.service.getByData(new Date('2019-09-30')).subscribe((meals: MealModel[]) => {
+    this.service.getByData(new Date()).subscribe((meals: MealModel[]) => {
       if (meals) {
         this.meals = meals;
         console.log(this.meals);

@@ -15,6 +15,7 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
   public client: ClientModel;
 
   public formClient: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private service: ClientService,
@@ -23,7 +24,7 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
+    if (id !== null && id !== undefined) {
       this.getById(parseInt(id, 0));
     } else {
       this.client = new ClientModel();
@@ -40,6 +41,7 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
       numero: this.formBuilder.control(this.client.numero, [Validators.required]),
       dataNascimento: this.formBuilder.control(this.client.dataNascimento, [Validators.required]),
       tipoCliente: this.formBuilder.control(this.client.tipoCliente, [Validators.required]),
+      ativo: this.formBuilder.control(this.client.ativo, [Validators.required]),
     });
   }
 
@@ -47,7 +49,7 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
     this.service.getById(id).subscribe((c) => {
       if (c) {
         this.client = c;
-        console.log(this.client.dataAtivacao);
+        console.log(this.client);
       }
     }, (error: HttpErrorResponse) => {
       console.log(error);
@@ -57,9 +59,11 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
   save() {
     this.client = new ClientModel();
     this.client.nome = this.formClient.value.nome;
-    this.client.numero = this.formClient.value.numero;
+    this.client.numero = parseInt(this.formClient.value.numero, 0);
     this.client.dataNascimento = this.formClient.value.dataNascimento;
     this.client.tipoCliente = this.formClient.value.tipoCliente;
+    this.client.ativo = this.formClient.value.ativo;
+
     if (this.client.id) {
       this.update();
     } else {
@@ -72,8 +76,8 @@ export class ClientFormComponent implements OnInit, AfterContentChecked {
 
   create() {
     this.service.insert(this.client).subscribe((result) => {
-      if (result === null || result === undefined) {
-        console.log('erro');
+      if (result !== null || result !== undefined) {
+        console.log(result);
       }
     }, (error) => {
         console.error(error);

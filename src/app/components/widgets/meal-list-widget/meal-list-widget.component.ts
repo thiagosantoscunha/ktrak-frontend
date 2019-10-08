@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
 import { MealModel } from 'src/app/core/models/meal.model';
+import { MealType } from 'src/app/core/models/meal-type.model';
+import { Avatar } from 'src/app/core/models/avatar.model';
 
 @Component({
   selector: 'app-meal-list-widget',
@@ -21,6 +23,8 @@ export class MealListWidgetComponent implements OnInit {
   @Input()
   public hasLimit = true;
 
+
+
   constructor() { }
 
   ngOnInit() {
@@ -36,5 +40,7 @@ export class MealListWidgetComponent implements OnInit {
 
   search(event) {
   }
+
+
 
 }

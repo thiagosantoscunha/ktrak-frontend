@@ -1,12 +1,12 @@
-<div class="widget mt-5" [class.widget-dark]="darkMode" *ngIf="data !== null">
+<div class="widget" [class.widget-dark]="darkMode" *ngIf="data !== null">
   <div class="widget-title">
     <h3>Lista de Refeições</h3>
     <span>{{ sizeData() }} Refeiões</span>
-    <div class="widget-controls">
+    <!-- <div class="widget-controls">
       <span class="close-content"><i class="fa fa-trash-o"></i></span>
       <span class="expand-content"><i class="fa fa-expand"></i></span>
       <span class="refresh-content"><i class="fa fa-refresh"></i></span>
-    </div><!-- Widget Controls -->
+    </div>Widget Controls -->
   </div>
   <div class="our-clients-sec" [class.limiting]="hasLimit">
     <div id="searchDir" *ngIf="showSearchForm">
@@ -17,10 +17,10 @@
     <div >
       <ul class="client-list">
         <li *ngFor="let d of data" (click)="edit(d)">
-          <span class="user-status online red-bg">
-            <i class="fas fa-coffee" *ngIf="d.tipoRefeicao.id === 1"></i>
-            <i class="fas fa-utensils" *ngIf="d.tipoRefeicao.id === 2"></i>
-            <i class="fas fa-cookie" *ngIf="d.tipoRefeicao.id === 3"></i>
+          <span class="user-status">
+            <img src="./assets/icons/coffee-cup.svg" *ngIf="d.tipoRefeicao.id === 1">
+            <img src="./assets/icons/fish.svg" *ngIf="d.tipoRefeicao.id === 2">
+            <img src="./assets/icons/sandwich.svg" *ngIf="d.tipoRefeicao.id === 3">
           </span>
           <div class="client-info">
             <div class="d-flex flex-row justify-content-between">
@@ -38,3 +38,4 @@
       </ul>
     </div><!-- Our Clients Sec -->
   </div>
+

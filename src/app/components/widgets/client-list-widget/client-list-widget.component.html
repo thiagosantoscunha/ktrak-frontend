@@ -9,9 +9,7 @@
     </div><!-- Widget Controls -->
   </div>
   <div class="our-clients-sec">
-    <div id="searchDir">
-      <form class="filterform"><input class="filterinput" type="text" placeholder="Pesquisar um cliente" (keydown.enter)="search($event)"></form>
-    </div>
+
     <div>
       <ul class="client-list">
         <li *ngFor="let d of data" (click)="edit(d)">
