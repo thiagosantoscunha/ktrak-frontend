@@ -1,14 +1,14 @@
 import { HeaderContentPageModule } from './../../shared/header-content-page/header-content-page.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { AlunosComponent } from './alunos.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [AlunosComponent],
   imports: [
     CommonModule,
     HeaderContentPageModule
   ],
-  exports: [HomeComponent],
+  exports: [AlunosComponent],
 })
-export class HomeModule { }
+export class AlunosModule { }

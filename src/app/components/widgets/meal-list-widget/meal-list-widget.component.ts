@@ -1,7 +1,4 @@
 import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
-import { MealModel } from 'src/app/core/models/meal.model';
-import { MealType } from 'src/app/core/models/meal-type.model';
-import { Avatar } from 'src/app/core/models/avatar.model';
 
 @Component({
   selector: 'app-meal-list-widget',
@@ -12,7 +9,7 @@ export class MealListWidgetComponent implements OnInit {
 
   // tslint:disable-next-line: no-input-rename
   @Input('data')
-  public data: MealModel[];
+  public data: any[];
 
   @Input()
   public darkMode = false;
@@ -30,7 +27,7 @@ export class MealListWidgetComponent implements OnInit {
   ngOnInit() {
   }
 
-  edit(d: MealModel) {
+  edit(d: any) {
     console.log(d);
   }
 

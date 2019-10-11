@@ -3,30 +3,34 @@
         <div class="quick-report-side">
              <span class="text-uppercase">Relatório de hoje</span>
              <ul>
-                  <li><div><strong>456</strong><span>Cafés</span></div></li>
-                  <li><div><strong>115</strong><span>Almoços</span></div></li>
-                  <li><div><strong>120</strong><span>Lanches</span></div></li>
+                  <li><div><strong>568</strong><span>Alunos</span></div></li>
+                  <li><div><strong>89%</strong><span>Presentes</span></div></li>
+                  <li><div><strong>11%</strong><span>Ausentes</span></div></li>
              </ul>
         </div>
         <div class="side-menus">
              <span class="text-uppercase">Opções principais</span>
              <nav>
                   <ul class="parent-menu">
-                       <li appDropdown class="menu-item-has-children" routerLink="/registrator">
-                            <a><i class="fa fa-desktop"></i><span>Registrador</span></a>
-                       </li>
                        <li appDropdown class="menu-item-has-children">
-                            <a><i class="fa fa-desktop"></i><span>Cliente</span></a>
+                            <a><i class="fas fa-user-graduate"></i><span>Aluno</span></a>
                             <ul>
-                                 <li><a routerLink="/clients">Lista</a></li>
-                                 <li><a routerLink="/clients/new">Criar</a></li>
+                                 <li><a routerLink="/alunos">Lista</a></li>
+                                 <li><a routerLink="/alunos/new">Novo</a></li>
                             </ul>
                        </li>
                        <li appDropdown class="menu-item-has-children">
-                            <a><i class="fa fa-desktop"></i><span>Refeição</span></a>
+                            <a><i class="fas fa-chalkboard-teacher"></i><span>Professor</span></a>
                             <ul>
-                                 <li><a routerLink="/refeicoes">Lista</a></li>
-                                 <li><a routerLink="/refeicoes/new">Criar</a></li>
+                                 <li><a routerLink="/professores">Lista</a></li>
+                                 <li><a routerLink="/professores/new">Novo</a></li>
+                            </ul>
+                       </li>
+                       <li appDropdown class="menu-item-has-children">
+                            <a><i class="fab fa-earlybirds"></i><span>Matrícula</span></a>
+                            <ul>
+                              <li><a routerLink="/matriculas">Lista</a></li>
+                              <li><a routerLink="/matriculas/new">Novo</a></li>
                             </ul>
                        </li>
                   </ul>

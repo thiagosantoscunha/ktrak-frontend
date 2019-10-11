@@ -1,9 +1,9 @@
 <div class="top-bar">
           <div class="logo">
-               <i class="fa fa-bullseye"></i> Aimbra Hunger
+               <i class="fa fa-bullseye"></i> KTRAK
               </div>
-          <div class="menu-options" [class.active]="viewSidebar" (click)="toggleSidebar()" *ngIf="isLooged()"><span class="menu-action"><i></i></span></div>
-          <div class="search-dashboard" *ngIf="isLooged()">
+          <div class="menu-options" [class.active]="viewSidebar" (click)="toggleSidebar()"><span class="menu-action"><i></i></span></div>
+          <div class="search-dashboard">
                <div class="responsive-search">
                     <i class="fa fa-search"></i>
                </div>
@@ -17,19 +17,16 @@
           <div class="top-bar-quick-sec" >
 
                <ul class="quick-notify-section custom-dropdowns">
-                    <li class="">
-                        <app-hunger-clock></app-hunger-clock>
-                    </li>
-                    <!-- <li class="notification-list dropdown">
+                    <li class="notification-list dropdown">
                          <span><i class="fa fa-envelope-o"></i><strong class="red-bg">12</strong></span>
                     </li>
                     <li class="activity-list dropdown">
                          <span><i class="fa fa-bug"></i><strong class="blue-bg">12</strong></span>
-                    </li> -->
+                    </li>
                </ul>
-               <span class="open-panel" *ngIf="isLooged()"><i class="fa fa-cog fa-spin"></i></span>
+               <span class="open-panel"><i class="fa fa-cog fa-spin"></i></span>
                <span id="toolFullScreen" class="full-screen-btn"><i class="fa fa-arrows-alt"></i></span>
-               <div class="name-area" *ngIf="isLooged()">
+               <div class="name-area">
                     <a><img src="assets/images/thiago.jpg" alt=""> <strong>Thiago Cunha</strong></a>
                </div>
             </div>

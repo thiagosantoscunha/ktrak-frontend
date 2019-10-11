@@ -1,34 +1,26 @@
+import { MatriculasComponent } from './pages/matriculas/matriculas.component';
+import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegistratorComponent } from './pages/registrator/registrator.component';
+import { AlunosComponent } from './pages/alunos/alunos.component';
+import { ProfessoresComponent } from './pages/professores/professores.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
     component: HomeComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'alunos',
+    component: AlunosComponent
   },
   {
-    path: 'registrator',
-    component: RegistratorComponent
+    path: 'professores',
+    component: ProfessoresComponent
   },
   {
-    path: 'clients',
-    loadChildren: () => import(`./pages/clients/client-list/client-list.module`).then(m => m.ClientListModule)
-  },
-  {
-    path: 'refeicoes',
-    loadChildren: () => import(`./pages/refeicoes/refeicao-list/refeicao-list.module`).then(m => m.RefeicaoListModule)
+    path: 'matriculas',
+    component: MatriculasComponent
   }
 ];
 
