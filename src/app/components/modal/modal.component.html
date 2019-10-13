@@ -6,10 +6,10 @@
         <button type="button" class="close" data-dismiss="modal" (click)="toggleShow()">×</button>
       </div>
       <div class="modal-body">
-        <p>{{ description }}</p>
+        <ng-content select="[body]"></ng-content>
       </div>
       <div class="modal-footer">
-        <button type="button" class="c-btn large blue-bg" data-dismiss="modal" (click)="toggleShow()">Close</button>
+        <ng-content select="[footer]"></ng-content>
       </div>
     </div>
   </div>

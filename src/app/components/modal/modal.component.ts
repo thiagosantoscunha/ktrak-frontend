@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export interface ModalRender {
   title: string;
@@ -14,10 +14,11 @@ export interface ModalRender {
 export class ModalComponent implements OnInit {
 
   @Input() public show: boolean;
-
   @Input() public title: string;
-
   @Input() public description: string;
+
+  @Output()
+  public closed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {
     this.show = false;
@@ -33,6 +34,7 @@ export class ModalComponent implements OnInit {
 
   toggleShow() {
     this.show = !this.show;
+    this.closed.emit(this.show);
   }
 
   open() {
