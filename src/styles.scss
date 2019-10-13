@@ -115,3 +115,10 @@ $switch-knob-checked-left: $switch-knob-width;
 .inline-form > input, .inline-form > textarea {
   padding: 20px 30px;
 }
+
+
+.c-btn {
+  border: {
+    radius: 3px;
+  };
+}

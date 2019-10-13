@@ -9,6 +9,8 @@ import { NavigationModule } from './shared/navigation/navigation.module';
 import { PagesModule } from './pages/pages.module';
 import { MenuSidebarModule } from './shared/menu-sidebar/menu-sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
+import { StoreModule } from '@ngrx/store';
+import { alunoReducer } from './reducers/aluno.reducer';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,14 @@ import { FooterModule } from './shared/footer/footer.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NavigationModule,
+    HttpClientModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({
+      aluno: alunoReducer
+    }),
+    NavigationModule,
     PagesModule,
     MenuSidebarModule,
-    HttpClientModule,
     FooterModule
   ],
   providers: [],
