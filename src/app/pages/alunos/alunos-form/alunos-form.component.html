@@ -1,0 +1,48 @@
+<form [formGroup]="formAluno" novalidate>
+  <div class="row">
+    <div class="col-9">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" class="form-control" placeholder="Digite o nome completo" formControlName="nome">
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label for="dataNascimento">Data Nascimento</label>
+        <input type="date" class="form-control" placeholder="Selecione a data" formControlName="dataNascimento">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <label for="cep">CEP</label>
+        <input type="number" class="form-control" placeholder="Digite o CEP" formControlName="cepControl">
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="form-group">
+        <label for="logradouro">Logradouro</label>
+        <input type="text" class="form-control" placeholder="Digite o Endereço" formControlName="logradouro">
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="bairro">Bairro</label>
+        <input type="text" class="form-control" placeholder="Digite o Bairro" formControlName="bairro">
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="bairro">Cidade</label>
+        <input type="text" class="form-control" placeholder="Digite o Cidade" formControlName="cidade">
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" class="form-control" placeholder="Digite o Estado" formControlName="estado">
+      </div>
+    </div>
+  </div>
+</form>

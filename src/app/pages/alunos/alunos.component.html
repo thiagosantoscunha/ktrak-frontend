@@ -1,1 +1,41 @@
-<app-header-content-page [title]="'Alunos'" [subtitle]="'Uma lista com os alunos ativos e inativos da instituição.'"></app-header-content-page>
+<app-header-content-page [title]="'Alunos'" [subtitle]="'Uma lista com os alunos ativos e inativos da instituição.'">
+    <div class="col-md-9 column">
+        <div class="quick-btn-title">
+             <a href="javascript: void()" (click)="newAluno()"><i class="fa fa-plus"></i> Novo Aluno</a>
+             <a href="javascript: void()"><i class="fa fa-cloud-upload"></i> Relatórios</a>
+        </div>
+   </div>
+</app-header-content-page>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <table class="table table-hover mt-5">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Cidade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of alunos">
+          <td>{{ a.nome }}</td>
+          <td>{{ a.cidade }}</td>
+          <td><button class="btn btn-danger" (click)="confirmRemove(a)"><i class="fa fa-trash"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-modal #modalForm (closed)="show = $event">
+  <div body>
+    <app-alunos-form [wasSave]="isSave"></app-alunos-form>
+  </div>
+  <div footer>
+    <button type="button" class="c-btn large red-bg ml-3" data-dismiss="modal" (click)="closeDialog()">Close</button>
+    <button type="button" class="c-btn large blue-bg ml-3" data-dismiss="modal" (click)="save()">Salvar</button>
+  </div>
+</app-modal>
+
+<app-alert-dialog #alertDialog (isConfirmed)="remove($event)"></app-alert-dialog>

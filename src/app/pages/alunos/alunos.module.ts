@@ -2,12 +2,18 @@ import { HeaderContentPageModule } from './../../shared/header-content-page/head
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunosComponent } from './alunos.component';
+import { ModalModule } from 'src/app/components/modal/modal.module';
+import { AlunosFormModule } from './alunos-form/alunos-form.module';
+import { AlertDialogModule } from 'src/app/components/alert-dialog/alert-dialog.module';
 
 @NgModule({
   declarations: [AlunosComponent],
   imports: [
     CommonModule,
-    HeaderContentPageModule
+    HeaderContentPageModule,
+    ModalModule,
+    AlunosFormModule,
+    AlertDialogModule
   ],
   exports: [AlunosComponent],
 })
