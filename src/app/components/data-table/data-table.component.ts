@@ -1,35 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-export class DataTableModel {
-  key: number;
-  type: string;
-  title: string;
-  label: string;
-}
-
-export interface DataTableRender {
-  getModel(): DataTableModel;
-}
+import { Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent implements OnInit, OnChanges, AfterViewInit {
 
-  @Input()
-  public data: DataTableRender;
-
-  public model: DataTableModel;
+  @ViewChild('tableElement', { static: true })
+  public tableElement: HTMLElement;
 
   constructor() {
-    if (this.data) {
-      this.model = this.data.getModel();
-    }
   }
 
   ngOnInit() {
+  }
+  ngAfterViewInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
   }
 
 }
