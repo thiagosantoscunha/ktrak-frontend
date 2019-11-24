@@ -1,2 +1,99 @@
-<app-header-content-page [title]="'Professores'" [subtitle]="'Segue lista de professores da instituição'">
+<app-header-content-page [title]="'Professores'" [subtitle]="'Uma lista com os professores ativos e inativos da instituição.'">
+  <div class="col-md-9 column">
+      <div class="quick-btn-title">
+           <a href="javascript: void()" (click)="novo()"><i class="fa fa-plus"></i> Novo professor</a>
+      </div>
+ </div>
 </app-header-content-page>
+
+<div class="row mt-5">
+<div class="col-12">
+  <table class="table table-hover mt-5">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cidade</th>
+        <th>Inativo/Ativo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of professores">
+        <td>{{ p.nome }}</td>
+        <td>{{ p.cidade }}</td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="p.status" (change)="toggleStatus($event, p)">
+            <span class="slider round"></span>
+          </label>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="confirmRemove(p)" title="Remove Aluno"><i class="fa fa-trash"></i></button>
+          <button class="btn btn-warning ml-3" (click)="edit(p)" title="Atualiza um aluno"><i class="fa fa-pencil"></i></button>
+          <button class="btn btn-primary ml-3" (click)="showDetails(p)" title="Exibir Detalhes"><i class="fa fa-pencil"></i> Exibir detalhes</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<app-modal #modalForm (closed)="show = $event">
+<div body>
+    <form [formGroup]="professorForm" class="mt-4" novalidate>
+        <div class="row">
+          <div class="col-9">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" class="form-control" placeholder="Digite o nome completo" formControlName="nome">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="dataNascimento">Data Nascimento</label>
+              <input type="date" class="form-control" placeholder="Selecione a data" formControlName="dataNascimento">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <div class="form-group">
+              <label for="cep">CEP</label>
+              <input type="number" class="form-control" placeholder="Digite o CEP" formControlName="cep">
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="form-group">
+              <label for="logradouro">Logradouro</label>
+              <input type="text" class="form-control" placeholder="Digite o Endereço" formControlName="logradouro">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="bairro">Bairro</label>
+              <input type="text" class="form-control" placeholder="Digite o Bairro" formControlName="bairro">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="bairro">Cidade</label>
+              <input type="text" class="form-control" placeholder="Digite o Cidade" formControlName="cidade">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="estado">Estado</label>
+              <input type="text" class="form-control" placeholder="Digite o Estado" formControlName="estado">
+            </div>
+          </div>
+        </div>
+      </form>
+</div>
+<div footer>
+
+  <button type="button" class="c-btn large red-bg ml-3" data-dismiss="modal" (click)="closeDialog()">Close</button>
+  <button type="button" class="c-btn large blue-bg ml-3" data-dismiss="modal" (click)="save()">Salvar</button>
+</div>
+</app-modal>
+
+<app-alert-dialog #alertDialog (isConfirmed)="podeRemover($event)"></app-alert-dialog>

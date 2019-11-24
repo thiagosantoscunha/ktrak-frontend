@@ -43,4 +43,11 @@ export class AlertDialogComponent implements OnInit {
     this.show = false;
   }
 
+  build(title: string, body: string, type: string, mode: boolean = false) {
+    this.confirmationMode = mode;
+    this.title = title;
+    this.contentBody = body;
+    this.type = type;
+  }
+
 }
