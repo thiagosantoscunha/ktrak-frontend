@@ -1,5 +1,5 @@
 import { AuthService } from 'src/app/security/auth.service';
-import { CanLoad, Route } from '@angular/router';
+import { CanLoad, Route, ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -13,6 +13,10 @@ export class LoggedInGuard implements CanLoad {
     if (!loggedin) {
       this.authService.handleLogin();
     }
+    return false;
+  }
+
+  canActivate(activatedRoute: ActivatedRouteSnapshot, routerState: RouterStateSnapshot): boolean {
     return false;
   }
 

@@ -1,4 +1,15 @@
 <app-header-content-page [title]="'Detalhes do aluno'" [subtitle]="'Alguns detalhes importantes do aluno'">
+    <div class="col-md-9 column">
+        <div class="quick-btn-title d-flex mt-3">
+          <div class="mt-1 mr-3">
+            Esta Ativo?
+          </div>
+          <label class="switch">
+                <input type="checkbox" [(ngModel)]="aluno.status" (change)="update()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+   </div>
 </app-header-content-page>
 
 
@@ -40,5 +51,26 @@
       <h5>Cursos do aluno</h5>
       <hr>
     </div>
+    <div class="col-12">
+      <div *ngIf="turmas.length == 0">
+        <div class="alert alert-warning">O aluno ainda não efetuou a matrícula</div>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="turmas.length > 0">
+        <div class="mt-3" *ngFor="let t of turmas">
+            <div class="">
+                 <!-- <div class="widget"> -->
+                      <div class="notification">
+                           <div role="alert" class="alert white">
+                             <span><i class="fa fa-check green-bg"></i></span><strong>{{ t.disciplina.nome }}</strong> com o professor {{ t.professor.nome }}
+                             <p *ngFor="let dha of t.diaHoraAulas" class="dias">{{ dha.dia }} às {{ dha.hora }}</p>
+                           </div>
+                      </div>
+                 <!-- </div> -->
+            </div>
+       </div>
+    </div>
   </div>
 </div>
+
+<app-alert-dialog #alertDialog></app-alert-dialog>

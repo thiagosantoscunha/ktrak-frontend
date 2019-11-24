@@ -14,6 +14,7 @@
         <tr>
           <th>Nome</th>
           <th>Cidade</th>
+          <th>Inativo/Ativo</th>
           <th>Ações</th>
         </tr>
       </thead>
@@ -21,6 +22,12 @@
         <tr *ngFor="let a of alunos">
           <td>{{ a.nome }}</td>
           <td>{{ a.cidade }}</td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="a.status" (change)="toggleStatus($event, a)">
+              <span class="slider round"></span>
+            </label>
+          </td>
           <td>
             <button class="btn btn-danger" (click)="confirmRemove(a)" title="Remove Aluno"><i class="fa fa-trash"></i></button>
             <button class="btn btn-warning ml-3" (click)="edit(a)" title="Atualiza um aluno"><i class="fa fa-pencil"></i></button>

@@ -1,5 +1,4 @@
-import { StatusPessoa } from './../enums/status-pessoa.model';
-export class AlunoModel {
+export class ProfessorModel {
   public id: any;
   public nome: string;
   public dataNascimento: Date;
@@ -9,5 +8,4 @@ export class AlunoModel {
   public cidade: string;
   public estado: string;
   public status?: string;
-  public digital?: boolean;
 }

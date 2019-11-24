@@ -1,3 +1,4 @@
+import { StatusPessoa } from './../../core/enums/status-pessoa.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
@@ -17,6 +18,9 @@ export enum DialogColor { DANGER, PRIMARY, SUCCESS, WARNING, INFO }
 })
 export class AlunosComponent implements OnInit {
 
+  constructor(private alunoService: AlunosService, private router: Router) {
+  }
+
   isSave = false;
   alunos: AlunoModel[];
   aluno: AlunoModel;
@@ -27,8 +31,7 @@ export class AlunosComponent implements OnInit {
   @ViewChild('alertDialog', { static: true })
   alertDialog: AlertDialogComponent;
 
-  constructor(private alunoService: AlunosService, private router: Router) {
-  }
+  statusLocal: boolean;
 
   ngOnInit() {
     this.findAll();
@@ -104,6 +107,28 @@ export class AlunosComponent implements OnInit {
 
   showDetails(aluno: AlunoModel) {
     this.router.navigate(['/alunos/detalhes/', aluno.id ]);
+  }
+
+  getStatus(status: string): boolean {
+    if (status === 'ATIVO') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  toggleStatus(event, aluno: AlunoModel) {
+    event.preventDefault();
+    this.aluno = aluno;
+    this.update();
+  }
+
+  update() {
+    this.alunoService.update(this.aluno).subscribe((aluno: AlunoModel) => {
+    }, (error) => {
+      this.openDialog('Error', error.error.message, 'danger');
+      console.error(error);
+    });
   }
 
 }
