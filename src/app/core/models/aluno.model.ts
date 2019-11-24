@@ -7,5 +7,5 @@ export class AlunoModel {
   public bairro: string;
   public cidade: string;
   public estado: string;
-  public digital: string;
+  public digital?: string;
 }

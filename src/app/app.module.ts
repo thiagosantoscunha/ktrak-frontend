@@ -11,6 +11,7 @@ import { MenuSidebarModule } from './shared/menu-sidebar/menu-sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { StoreModule } from '@ngrx/store';
 import { alunoReducer } from './reducers/aluno.reducer';
+import { LoggedInGuard } from './security/loggedin.guard';
 
 @NgModule({
   declarations: [

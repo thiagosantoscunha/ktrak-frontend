@@ -39,12 +39,10 @@ export class ModalComponent implements OnInit {
 
   open() {
     this.show = true;
-    console.log(this.show);
   }
 
   close() {
     this.show = false;
-    console.log(this.show);
   }
 
 }

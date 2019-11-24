@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewChildren, AfterContentInit, ElementRef, Output, EventEmitter } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from 'src/app/security/auth.service';
 
 @Component({
   selector: 'app-navigation',

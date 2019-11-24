@@ -1,9 +1,14 @@
-
-
+<div *ngIf="isLogged()">
   <app-navigation (showSidebar)="viewSidebar($event)"></app-navigation>
   <app-menu-sidebar [showSidebar]="showSidebar"></app-menu-sidebar>
   <div class="main-content" [class.menu-slide]="showSidebar">
     <router-outlet></router-outlet>
   </div>
+</div>
 
+<div class="container" *ngIf="!isLogged()">
+  <div class="d-flex justify-content-center">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 

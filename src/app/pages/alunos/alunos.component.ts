@@ -1,10 +1,12 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
-import { AlunoService } from 'src/app/core/services/aluno.service';
 import { AlunoModel } from 'src/app/core/models/aluno.model';
 import { AlertDialogComponent, AlertType } from 'src/app/components/alert-dialog/alert-dialog.component';
 import { fromEvent } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { AlunosService } from 'src/app/services/alunos.service';
 
 export enum DialogColor { DANGER, PRIMARY, SUCCESS, WARNING, INFO }
 
@@ -15,37 +17,41 @@ export enum DialogColor { DANGER, PRIMARY, SUCCESS, WARNING, INFO }
 })
 export class AlunosComponent implements OnInit {
 
-  public isSave = false;
-  public alunos: AlunoModel[];
-  public aluno: AlunoModel;
+  isSave = false;
+  alunos: AlunoModel[];
+  aluno: AlunoModel;
 
   @ViewChild('modalForm', { static: true })
-  public modalForm: ModalComponent;
+  modalForm: ModalComponent;
 
   @ViewChild('alertDialog', { static: true })
-  public alertDialog: AlertDialogComponent;
+  alertDialog: AlertDialogComponent;
 
-  constructor(private alunoService: AlunoService) {
+  constructor(private alunoService: AlunosService, private router: Router) {
   }
 
   ngOnInit() {
-    this.alunoService.getAll().subscribe((alunos: AlunoModel[]) => {
+    this.findAll();
+  }
+
+  findAll() {
+    this.alunoService.findAll().subscribe((alunos: AlunoModel[]) => {
       if (alunos) {
         this.alunos = alunos;
       }
     });
   }
 
-  public newAluno(): void {
+  newAluno(): void {
     this.aluno = new AlunoModel();
     this.displayDialog();
   }
 
-  public closeDialog(): void {
+  closeDialog(): void {
     this.modalForm.close();
   }
 
-  public displayDialog(): void {
+  displayDialog(): void {
     // this.show = !this.show;
     if (this.aluno.id) {
       this.modalForm.title = 'Atualizar o usuário';
@@ -56,24 +62,48 @@ export class AlunosComponent implements OnInit {
     }
   }
 
-  public save() {
+  save() {
     this.isSave = true;
     this.modalForm.close();
+    this.findAll();
   }
 
-  public confirmRemove(aluno: AlunoModel) {
-    this.alertDialog.title = 'Atenção!';
-    this.alertDialog.contentBody = 'Você deseja realmente remover este aluno?';
-    this.alertDialog.confirmationMode = true;
+  confirmRemove(aluno: AlunoModel) {
+    this.aluno = aluno;
+    this.openDialog('Atenção', 'Você deseja realmente remover este aluno?', 'info', true);
     this.alertDialog.openDialog();
   }
 
-  public remove(event: boolean): void {
+  remove(event: boolean): void {
     if (event !== undefined && event === true) {
-      console.log('Remove');
-    } else {
-      console.log('NÃO Remove');
+      this.alunoService.deleteById(this.aluno.id).subscribe(resp => {
+        if (resp) {
+          this.openDialog('Sucesso', 'Aluno Removido com sucesso', 'success');
+        }
+      }, (httpError: HttpErrorResponse) => {
+        this.openDialog('Erro', httpError.error.message, 'danger');
+        console.error(httpError);
+      });
     }
+  }
+
+  openDialog(title: string, body: string, type: string, mode: boolean = false) {
+    this.alertDialog.confirmationMode = mode;
+    this.alertDialog.title = title;
+    this.alertDialog.contentBody = body;
+    this.alertDialog.type = type;
+    this.alertDialog.openDialog();
+  }
+
+  edit(aluno: AlunoModel) {
+    this.aluno = aluno;
+    this.displayDialog();
+  }
+
+
+
+  showDetails(aluno: AlunoModel) {
+    this.router.navigate(['/alunos/detalhes/', aluno.id ]);
   }
 
 }

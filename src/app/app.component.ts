@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './core/services/auth.service';
+import { AuthService } from './security/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.isLogged();
     const user = window.localStorage.getItem('user');
     if (user === null || user === undefined) {
       this.showSidebar = false;

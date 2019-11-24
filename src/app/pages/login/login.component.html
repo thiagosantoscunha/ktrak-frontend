@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="login text-center mt-5">
+    <i class="fa fa-bullseye"></i>
+    <h3>Fazer Login</h3>
+    <p>Preencha os campos corretamente para acessar o sistema.</p>
+  </div>
+  <form [formGroup]="loginGroup">
+    <div class="2">
+      <div class="inline-form">
+        <label class="c-label">Seu usuário</label>
+        <input class="input-style" type="text" placeholder="Seu usuário" formControlName="username">
+      </div>
+    </div>
+    <div class="inline-form">
+      <label class="c-label">Sua senha</label>
+      <input class="input-style" type="password" placeholder="Sua senha" formControlName="password">
+    </div>
+    <button class="c-btn large skyblue-bg reaius-n btn-block mt-3" (click)="login()" type="button">Acessar</button>
+  </form>
+</div>
