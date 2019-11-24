@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AlunosComponent } from './pages/alunos/alunos.component';
 import { ProfessoresComponent } from './pages/professores/professores.component';
 import { LoggedInGuard } from './security/loggedin.guard';
+import { DisciplinasComponent } from './pages/disciplinas/disciplinas.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'matriculas',
     component: MatriculasComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'disciplinas',
+    component: DisciplinasComponent,
     canLoad: [LoggedInGuard]
   }
 ];

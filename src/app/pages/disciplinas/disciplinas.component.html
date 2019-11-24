@@ -1,0 +1,46 @@
+<app-header-content-page [title]="'Disciplinas'" [subtitle]="'Uma lista com os alunos ativos e inativos da instituição. Para adicionar uma nova disciplina, clique em novo'">
+    <div class="col-md-9 column">
+        <div class="quick-btn-title">
+             <a href="javascript: void()" (click)="novo()"><i class="fa fa-plus"></i> Nova disciplina</a>
+        </div>
+   </div>
+</app-header-content-page>
+
+<div class="row">
+  <div class="col-12">
+    <div class="disciplina-list" *ngFor="let d of disciplinas">
+        <div class="notification mt-3 ">
+            <div role="alert" class="alert white">
+              <span><i class="fa fa-book green-bg"></i></span><strong>{{ d.nome }}</strong>
+              <span><i (click)="initRemove(d)" class="fa fa-trash red-bg" style="left: unset; right: 20px;"></i></span>
+              <span><i (click)="initEdit(d)" class="fa fa-pencil blue-bg" style="left: unset; right: 60px;"></i></span>
+              <!-- <button class="c-btn small red-bg"><i class="fa fa-trash white-bg"></i></button> -->
+            </div>
+       </div>
+    </div>
+  </div>
+</div>
+
+
+
+<app-modal #modalForm (closed)="show = $event">
+    <div body>
+        <form [formGroup]="disciplinaForm" class="mt-4" novalidate>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="form-control" placeholder="Digite o nome completo" formControlName="nome">
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div footer>
+
+      <button type="button" class="c-btn large red-bg ml-3" data-dismiss="modal" (click)="closeDialog()">Close</button>
+      <button type="button" class="c-btn large blue-bg ml-3" data-dismiss="modal" (click)="save()">Salvar</button>
+    </div>
+    </app-modal>
+
+    <app-alert-dialog #alertDialog (isConfirmed)="podeRemover($event)"></app-alert-dialog>

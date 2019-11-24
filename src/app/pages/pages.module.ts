@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AlunosModule } from './alunos/alunos.module';
 import { ProfessoresModule } from './professores/professores.module';
 import { LoginModule } from './login/login.module';
+import { DisciplinasModule } from './disciplinas/disciplinas.module';
 @NgModule({
   declarations: [],
   imports: [
@@ -15,7 +16,8 @@ import { LoginModule } from './login/login.module';
     ProfessoresModule,
     MatriculasModule,
     LoginModule,
-    AlunoDetailModule
+    AlunoDetailModule,
+    DisciplinasModule
   ]
 })
 export class PagesModule { }

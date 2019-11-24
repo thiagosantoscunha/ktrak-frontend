@@ -1,0 +1,10 @@
+i {
+  cursor: pointer;
+  i.fa-trash {
+    transition-property: background-color;
+    transition-duration: 350;
+    &:hover {
+      background-color: #b0000e !important;
+    }
+  }
+}
