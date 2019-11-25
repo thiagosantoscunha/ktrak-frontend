@@ -24,20 +24,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log('startando login');
     const login: Login = {
       username: this.loginGroup.value.username,
       password: this.loginGroup.value.password
     };
-    this.authService.login(login).subscribe(resp => {
-      if (resp.token != null && resp.token !== undefined) {
-        localStorage.setItem('jwt', resp.token);
-        this.router.navigate(['/alunos']);
-      } else {
-        alert('Erro no usuário ou senha');
-      }
-    }, (error: HttpErrorResponse) => {
-        console.error(error);
-    });
+    console.log(login);
+    this.authService.login(login);
   }
 
   isValidForm(): boolean {

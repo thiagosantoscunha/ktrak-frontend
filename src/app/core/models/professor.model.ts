@@ -8,4 +8,6 @@ export class ProfessorModel {
   public cidade: string;
   public estado: string;
   public status?: string;
+
+  public isSelected = false;
 }

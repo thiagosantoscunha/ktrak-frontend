@@ -50,6 +50,7 @@ export class DisciplinasComponent implements OnInit {
     this.disciplina = new DisciplinaModel();
     this.modalForm.title = 'Nova Disciplina';
     this.modalForm.open();
+    this.initForm();
   }
 
   save() {

@@ -7,6 +7,7 @@ import { AlunosModule } from './alunos/alunos.module';
 import { ProfessoresModule } from './professores/professores.module';
 import { LoginModule } from './login/login.module';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
+import { TurmasModule } from './turmas/turmas.module';
 @NgModule({
   declarations: [],
   imports: [
@@ -17,7 +18,8 @@ import { DisciplinasModule } from './disciplinas/disciplinas.module';
     MatriculasModule,
     LoginModule,
     AlunoDetailModule,
-    DisciplinasModule
+    DisciplinasModule,
+    TurmasModule
   ]
 })
 export class PagesModule { }

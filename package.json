@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "@ngrx/store": "^8.4.0",
-    "@types/lodash": "^4.14.141",
+    "@types/lodash": "^4.14.149",
     "bootstrap": "^4.3.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
