@@ -1,0 +1,26 @@
+<app-header-content-page [title]="'Turmas'" [subtitle]="'Uma lista com as turmas da instituição. Para adicionar uma nova disciplina, clique em novo'">
+    <div class="col-md-9 column">
+        <div class="quick-btn-title">
+             <a href="javascript: void()" (click)="novo()"><i class="fa fa-plus"></i> Nova turma</a>
+        </div>
+   </div>
+</app-header-content-page>
+
+<div class="row">
+  <div class="col-12">
+    <div class="disciplina-list" *ngFor="let t of turmas">
+        <div class="notification mt-3 ">
+            <div role="alert" class="alert white">
+              <span><i class="fa fa-book green-bg"></i></span><strong>{{ t.disciplina.nome }}</strong> com o professor {{ t.professor.nome }} nos dias:<br>
+              <span *ngFor="let dha of t.diaHoraAulas; let i= index" class="text-sm text-muted">
+                {{ dha.dia }} às {{ dha.hora }} <span *ngIf="!(i === t.diaHoraAulas.length - 1)">e</span>
+              </span>
+              <span><i (click)="initRemove(t)" class="fa fa-trash red-bg" style="left: unset; right: 20px;"></i></span>
+              <span><i (click)="initEdit(t)" class="fa fa-pencil blue-bg" style="left: unset; right: 60px;"></i></span>
+            </div>
+       </div>
+    </div>
+  </div>
+</div>
+
+<app-alert-dialog #alert (isConfirmed)="podeRemover($event)"></app-alert-dialog>

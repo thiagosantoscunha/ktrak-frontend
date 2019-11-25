@@ -1,0 +1,97 @@
+<app-header-content-page [title]="'Nova Turma'" [subtitle]="'Uma lista com as turmas da instituição. Para adicionar uma nova disciplina, clique em novo'">
+</app-header-content-page>
+
+<div class="content">
+  <div class="row">
+      <div class="col-12">
+        <div class="card card-body">
+          <h6>Selecione um professor</h6>
+          <hr>
+          <div class="row">
+            <div class="col-3" *ngFor="let p of professores">
+              <div class="widget" [ngClass]="{'active': p.isSelected }" (click)="setProfessor(p)">
+                  <div class="quick-report-widget" >
+                      <span>{{ p.cidade }}</span>
+                      <h4>{{ getFirstLastName(p.nome) }}</h4>
+                      <i class="fa" [ngClass]="{ 'silver-bg': !p.isSelected, 'green-bg': p.isSelected, 'fa-check': p.isSelected, 'circle-o': !p.isSelected }"></i>
+                      <h5>Mais detalhes (Em breve)</h5>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card card-body">
+          <h6>Selecione uma disciplina</h6>
+          <hr>
+          <div class="row">
+              <div class="col-3" *ngFor="let p of disciplinas">
+                <div class="widget" [ngClass]="{'active': p.isSelected }" (click)="setDisciplina(p)">
+                    <div class="quick-report-widget">
+                        <span>{{ p.nome }}</span>
+                        <h4>{{ getFirstLastName(p.nome) }}</h4>
+                        <i class="fa" [ngClass]="{ 'silver-bg': !p.isSelected, 'green-bg': p.isSelected, 'fa-check': p.isSelected, 'circle-o': !p.isSelected }"></i>
+                        <h5>123 já fizeram esta disciplina</h5>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-12 mt-5">
+        <h6>Selecione até 2 horários</h6>
+        <hr>
+        <div class="row mt-3">
+          <div class="col-5">
+              <div class="form-group">
+                  <label>Selecione um dia</label>
+                  <select [(ngModel)]="diaHoraAula.dia" class="form-control">
+                      <option disabled selected>Selecione um horário</option>
+                      <option [value]="'MONDAY'">Segunda-feira</option>
+                      <option [value]="'TUESDAY'">Terça-feira</option>
+                      <option [value]="'THURSDAY'">Quarta-feira</option>
+                      <option [value]="'WEDNESDAY'">Quinta-feira</option>
+                      <option [value]="'FRIDAY '">Sexta-feira</option>
+                  </select>
+                </div>
+          </div>
+          <div class="col-5">
+              <div class="form-group">
+                  <label>Selecione um Horário</label>
+                  <select [(ngModel)]="diaHoraAula.hora" class="form-control">
+                      <option disabled selected>Selecione um horário</option>
+                      <option [value]="'18:00:0'">18:00</option>
+                      <option [value]="'20:00:0'">20:00</option>
+                  </select>
+                </div>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-primary blue-bg btn-plus" (click)="addDiaHoraAula()" type="button"><i class="fa fa-plus mr-3"></i></button>
+          </div>
+        </div>
+        <div class="row" *ngIf="turma.diaHoraAulas.length > 0">
+          <div class="col-12">
+            <h6>Dias Selecionados</h6>
+            <hr>
+            <div class="d-flex flex-row">
+              <div class="" *ngFor="let d of turma.diaHoraAulas">
+                <div class="badge bg-primary text-light mr-2 p-3">{{ d.dia }} às {{ d.hora }} <i class="fa fa-trash ml-3" (click)="remove(d)" title="Remover este horário neste dia"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <div class="form-group">
+      <button class="c-btn large green-bg btn-block" (click)="save()" type="button">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<app-alert-dialog #alert></app-alert-dialog>

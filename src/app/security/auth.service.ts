@@ -1,5 +1,5 @@
 import { tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Login } from './../pages/login/login.model';
 import { environment } from './../../environments/environment';
@@ -19,8 +19,17 @@ export class AuthService {
     this.baseHref = environment.base_url;
   }
 
-  login(login: Login): Observable<any> {
-    return this.http.post(`${this.baseHref}/login`, login);
+  login(login: Login) {
+    this.http.post(`${this.baseHref}/login`, login).subscribe((resp: any) => {
+      localStorage.setItem('jwt', resp.token);
+      this.router.navigate(['/alunos']);
+      if (resp.token != null && resp.token !== undefined) {
+      } else {
+        alert('Erro no usuário ou senha');
+      }
+    }, (error: HttpErrorResponse) => {
+        console.error(error);
+    });
   }
 
   isLogged(): boolean {

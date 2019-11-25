@@ -1,0 +1,21 @@
+.alert {
+  cursor: pointer;
+  span {
+    i {
+      top: 18px;
+    }
+    i.fa-trash {
+      &:hover{
+        background-color: red !important;
+      }
+    }
+    i.fa-pencil {
+      &:hover{
+        background-color: blue !important;
+      }
+    }
+  }
+  .text-sm {
+    font-size: .7rem;
+  }
+}
