@@ -88,40 +88,40 @@ $switch-knob-checked-left: $switch-knob-width;
 //   }
 // }
 
-// /* When input is checked */
-// .switch-input:checked + .switch-label {
-//   /* Switch Rail */
-//   &:before {
-//     background-color: $switch-rail-checked-background-color;
-//   }
+/* When input is checked */
+.switch-input:checked + .switch-label {
+  /* Switch Rail */
+  &:before {
+    background-color: $switch-rail-checked-background-color;
+  }
 
-//   /* Switch Knob */
-//   &:after {
-//     left: $switch-knob-checked-left;
-//   }
-// }
+  /* Switch Knob */
+  &:after {
+    left: $switch-knob-checked-left;
+  }
+}
 
-// .inline-form {
-//   label {
-//     right: unset;
-//     left: 10px;
-//   }
-//   select {
-//     height: 65px;
-//     padding: 0 27px;
-//   }
-// }
+.inline-form {
+  label {
+    right: unset;
+    left: 10px;
+  }
+  select {
+    height: 65px;
+    padding: 0 27px;
+  }
+}
 
-// .inline-form > input, .inline-form > textarea {
-//   padding: 20px 30px;
-// }
+.inline-form > input, .inline-form > textarea {
+  padding: 20px 30px;
+}
 
 
-// .c-btn {
-//   border: {
-//     radius: 3px;
-//   };
-// }
+.c-btn {
+  border: {
+    radius: 3px;
+  };
+}
 
 
 
@@ -188,3 +188,18 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.widget {
+  &.widget-select {
+    &:hover {
+      cursor: pointer;
+      background-color: #f9fafb;
+    }
+  }
+  &.active {
+    border: {
+      color: rgb(0, 170, 119);
+    };
+  }
+}
+

@@ -27,14 +27,12 @@ export class TurmasComponent implements OnInit {
   findAll() {
     this.turmaService.findAll().subscribe((turmas: TurmaModel[]) => {
       this.turmas = turmas;
-      console.log(turmas);
     }, (error: HttpErrorResponse) => {
         console.error(error);
     });
   }
 
   novo() {
-    console.log('ir para a página de formulário');
     this.router.navigate(['/turmas/novo']);
   }
 

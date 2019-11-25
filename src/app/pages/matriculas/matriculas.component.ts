@@ -3,6 +3,9 @@ import { MatriculasService } from 'src/app/services/matriculas.service';
 import { MatriculaModel } from 'src/app/core/models/matricula.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AlertDialogComponent } from 'src/app/components/alert-dialog/alert-dialog.component';
+import { Router } from '@angular/router';
+import { TurmaService } from 'src/app/services/turma.service';
+import { TurmaModel } from 'src/app/core/models/turma.model';
 
 @Component({
   selector: 'app-matriculas',
@@ -14,16 +17,21 @@ export class MatriculasComponent implements OnInit {
   matriculas: MatriculaModel[];
   matricula: MatriculaModel;
 
+
   @ViewChild('alert', { static: true })
   alert: AlertDialogComponent;
 
 
-  constructor(private matriculaService: MatriculasService) {
+  constructor(
+    private matriculaService: MatriculasService,
+    private router: Router
+  ) {
     this.matricula = new MatriculaModel();
   }
 
   ngOnInit() {
     this.findAll();
+
   }
 
   findAll() {
@@ -35,51 +43,28 @@ export class MatriculasComponent implements OnInit {
     });
   }
 
-  findById() {
-    this.matriculaService.findById(this.matricula.id).subscribe((matricula: MatriculaModel) => {
-      this.matricula = matricula;
-    }, (error: HttpErrorResponse) => {
-      console.error(error);
-    });
-  }
-
-  create() {
-    this.matriculaService.insert(this.matricula).subscribe((matricula: MatriculaModel) => {
-      this.matricula = matricula;
-      this.findAll();
-    }, (error: HttpErrorResponse) => {
-      this.alert.build('Error', error.error.message, 'danger', true);
-      this.alert.openDialog();
-      console.error(error);
-    });
-  }
-
-  update() {
-    this.matriculaService.update(this.matricula).subscribe((matricula: MatriculaModel) => {
-      this.matricula = matricula;
-      this.findAll();
-    }, (error: HttpErrorResponse) => {
-      this.alert.build('Error', error.error.message, 'danger', true);
-      this.alert.openDialog();
-      console.error(error);
-    });
-  }
-
   remove(event: boolean) {
-    if (event == true) {
+    if (event === true) {
       this.matriculaService.deleteById(this.matricula.id).subscribe((resp: any) => {
         this.findAll();
       }, (error: HttpErrorResponse) => {
-        this.alert.build('Error', error.error.message, 'danger', true);
+        this.alert.build('Error', error.error.message, 'danger');
         this.alert.openDialog();
         console.error(error);
       });
     }
   }
 
-  initRemove() {
+  initRemove(matricula: MatriculaModel) {
+    this.matricula = matricula;
     this.alert.build('Atenção', 'Gostaria de remover esta matrícula?', 'warning', true);
     this.alert.openDialog();
   }
+
+  goToEdit(m: MatriculaModel) {
+    this.router.navigate(['/matriculas/edita', m.id]);
+  }
+
+
 
 }

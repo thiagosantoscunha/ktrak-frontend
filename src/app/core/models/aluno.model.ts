@@ -10,4 +10,5 @@ export class AlunoModel {
   public estado: string;
   public status?: string;
   public digital?: boolean;
+  public isSelected = false;
 }

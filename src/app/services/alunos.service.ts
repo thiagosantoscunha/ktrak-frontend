@@ -21,6 +21,10 @@ export class AlunosService {
     return this.http.get<AlunoModel>(this.baseUrl + `/${id}`);
   }
 
+  findAllByAluno(nome: string): Observable<AlunoModel[]> {
+    return this.http.get<AlunoModel[]>(this.baseUrl + `/filter?nome=${nome}`);
+  }
+
   insert(aluno: AlunoModel): Observable<AlunoModel> {
     console.log('endpoint cria aluno', aluno);
     return this.http.post<AlunoModel>(this.baseUrl, aluno);

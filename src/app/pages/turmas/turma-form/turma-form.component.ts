@@ -13,6 +13,7 @@ import { DiaHoraAula } from 'src/app/core/models/dia-hora-aula.model';
 import { DiaHoraAulaValidator } from 'src/app/core/validators/dia-hora-aula.validator';
 
 import * as _ from 'lodash';
+import { Utils } from 'src/utils/utils';
 
 @Component({
   selector: 'app-turma-form',
@@ -201,8 +202,7 @@ export class TurmaFormComponent implements OnInit, AfterContentChecked {
   }
 
   getFirstLastName(value: string): string {
-    const array = value.split(' ');
-    return array[0] + ' ' + array[array.length - 1];
+    return Utils.getFirstLastName(value);
   }
 
 }

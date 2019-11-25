@@ -7,4 +7,5 @@ export class TurmaModel {
   professor: ProfessorModel;
   disciplina: DisciplinaModel;
   diaHoraAulas: DiaHoraAula[];
+  isSelected = false;
 }

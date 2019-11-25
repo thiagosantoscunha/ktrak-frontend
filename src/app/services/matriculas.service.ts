@@ -20,7 +20,7 @@ export class MatriculasService {
   }
 
   findById(id: number): Observable<MatriculaModel> {
-    return this.http.get<MatriculaModel>(this.baseUrl + `/{id}`);
+    return this.http.get<MatriculaModel>(this.baseUrl + `/${id}`);
   }
 
   insert(matricula: MatriculaModel): Observable<MatriculaModel> {
@@ -32,7 +32,7 @@ export class MatriculasService {
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete<any>(this.baseUrl + `?id=${id}`);
+    return this.http.delete(this.baseUrl + `?id=${id}`);
   }
 
 }

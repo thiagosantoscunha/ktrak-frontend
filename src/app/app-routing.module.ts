@@ -11,6 +11,7 @@ import { AlunosComponent } from './pages/alunos/alunos.component';
 import { ProfessoresComponent } from './pages/professores/professores.component';
 import { LoggedInGuard } from './security/loggedin.guard';
 import { DisciplinasComponent } from './pages/disciplinas/disciplinas.component';
+import { MatriculasFormComponent } from './pages/matriculas/matriculas-form/matriculas-form.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,16 @@ const routes: Routes = [
   {
     path: 'matriculas',
     component: MatriculasComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'matriculas/novo',
+    component: MatriculasFormComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'matriculas/edita/:id',
+    component: MatriculasFormComponent,
     canLoad: [LoggedInGuard]
   },
   {

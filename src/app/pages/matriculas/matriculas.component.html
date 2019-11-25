@@ -1,2 +1,34 @@
 <app-header-content-page [title]="'Matrículas'" [subtitle]="'Lista de alunos matrículados na instituição'">
 </app-header-content-page>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <table class="table table-hover mt-5">
+      <thead>
+        <tr>
+          <th>Aluno</th>
+          <th>Disciplina</th>
+          <th>Dia/Horário</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of matriculas">
+          <td>{{ m.aluno.nome }}</td>
+          <td>{{ m.turma.disciplina.nome }}</td>
+          <td>
+            <span *ngFor="let d of m.turma.diaHoraAulas">
+              {{ d.dia }} às {{ d.hora }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="initRemove(m)" title="Remove Aluno"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-warning ml-3" (click)="goToEdit(m)" title="Atualiza um aluno"><i class="fa fa-pencil"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-alert-dialog #alert (isConfirmed)="remove($event)"></app-alert-dialog>
