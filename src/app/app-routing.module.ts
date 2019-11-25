@@ -1,3 +1,5 @@
+import { TurmaFormComponent } from './pages/turmas/turma-form/turma-form.component';
+import { TurmasComponent } from './pages/turmas/turmas.component';
 import { AlunoDetailComponent } from './pages/alunos/aluno-detail/aluno-detail.component';
 import { AlunosFormComponent } from './pages/alunos/alunos-form/alunos-form.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -45,6 +47,21 @@ const routes: Routes = [
   {
     path: 'disciplinas',
     component: DisciplinasComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'turmas',
+    component: TurmasComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'turmas/novo',
+    component: TurmaFormComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'turmas/edita/:id',
+    component: TurmaFormComponent,
     canLoad: [LoggedInGuard]
   }
 ];
