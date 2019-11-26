@@ -21,6 +21,7 @@
     "@angular/router": "~8.0.0",
     "@ngrx/store": "^8.4.0",
     "@types/lodash": "^4.14.149",
+    "angularx-qrcode": "^1.7.0-beta.5",
     "bootstrap": "^4.3.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",

@@ -1,3 +1,4 @@
+import { QrpageModule } from './qrpage/qrpage.module';
 import { AlunoDetailModule } from './alunos/aluno-detail/aluno-detail.module';
 import { MatriculasModule } from './matriculas/matriculas.module';
 import { HomeModule } from './home/home.module';
@@ -19,7 +20,8 @@ import { TurmasModule } from './turmas/turmas.module';
     LoginModule,
     AlunoDetailModule,
     DisciplinasModule,
-    TurmasModule
+    TurmasModule,
+    QrpageModule
   ]
 })
 export class PagesModule { }

@@ -1,0 +1,5 @@
+<app-header-content-page [title]="'QRCode'" [subtitle]="'Use a câmera do celular para marcar presença'"></app-header-content-page>
+
+<div *ngIf="code !== undefined">
+  <qrcode [qrdata]="code.key" [size]="512" [level]="'M'"></qrcode>
+</div>

@@ -12,6 +12,7 @@ import { ProfessoresComponent } from './pages/professores/professores.component'
 import { LoggedInGuard } from './security/loggedin.guard';
 import { DisciplinasComponent } from './pages/disciplinas/disciplinas.component';
 import { MatriculasFormComponent } from './pages/matriculas/matriculas-form/matriculas-form.component';
+import { QrpageComponent } from './pages/qrpage/qrpage.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,11 @@ const routes: Routes = [
   {
     path: 'turmas/edita/:id',
     component: TurmaFormComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'qrcode',
+    component: QrpageComponent,
     canLoad: [LoggedInGuard]
   }
 ];
