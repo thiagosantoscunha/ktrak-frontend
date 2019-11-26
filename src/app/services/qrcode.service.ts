@@ -14,6 +14,6 @@ export class QrcodeService {
   constructor(private http: HttpClient) { }
 
   getRecentCode(): Observable<any> {
-    return this.http.get(this.baseUrl + '/data');
+    return this.http.get(this.baseUrl + '/current');
   }
 }
