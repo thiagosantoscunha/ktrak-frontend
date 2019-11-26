@@ -1,8 +1,18 @@
 <app-header-content-page [title]="'Matrículas'" [subtitle]="'Lista de alunos matrículados na instituição'">
 </app-header-content-page>
 
+
+
 <div class="row mt-5">
   <div class="col-12">
+      <div class="row mt-5">
+          <div class="col-12">
+            <h6>Clique para filtrar por cursos</h6>
+            <div class="badge badge-light p-3 mr-3" (click)="filtraTodos($event)">Todos</div>
+            <div class="badge badge-light p-3 mr-3" *ngFor="let d of disciplinas" (click)="filtraPorDisciplina($event, d)">{{ d.nome }}</div>
+          </div>
+        </div>
+
     <table class="table table-hover mt-5">
       <thead>
         <tr>

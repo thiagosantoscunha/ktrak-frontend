@@ -23,6 +23,10 @@ export class MatriculasService {
     return this.http.get<MatriculaModel>(this.baseUrl + `/${id}`);
   }
 
+  findAllByNomeCurso(nome: string): Observable<MatriculaModel[]> {
+    return this.http.get<MatriculaModel[]>(this.baseUrl + `/filter?nomeCurso=${nome}`);
+  }
+
   insert(matricula: MatriculaModel): Observable<MatriculaModel> {
     return this.http.post<MatriculaModel>(this.baseUrl, matricula);
   }

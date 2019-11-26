@@ -105,6 +105,7 @@ export class MatriculasFormComponent implements OnInit, AfterContentChecked, Aft
         this.alunos = alunos;
         if (this.alunos.length === 1) {
           this.alunos[0].isSelected = true;
+          this.matricula.aluno = this.alunos[0];
         }
       }, (error: HttpErrorResponse) => {
           this.alert.build('Error', error.error, 'danger');

@@ -6,6 +6,8 @@ import { AlertDialogComponent } from 'src/app/components/alert-dialog/alert-dial
 import { Router } from '@angular/router';
 import { TurmaService } from 'src/app/services/turma.service';
 import { TurmaModel } from 'src/app/core/models/turma.model';
+import { DisciplinaModel } from 'src/app/core/models/disciplina.model';
+import { DisciplinaService } from 'src/app/services/disciplina.service';
 
 @Component({
   selector: 'app-matriculas',
@@ -16,14 +18,18 @@ export class MatriculasComponent implements OnInit {
 
   matriculas: MatriculaModel[];
   matricula: MatriculaModel;
+  disciplinas: DisciplinaModel[];
 
 
   @ViewChild('alert', { static: true })
   alert: AlertDialogComponent;
 
+  private divAnterior: any = null;
+  private disciplina: DisciplinaModel;
 
   constructor(
     private matriculaService: MatriculasService,
+    private disciplinaService: DisciplinaService,
     private router: Router
   ) {
     this.matricula = new MatriculaModel();
@@ -31,7 +37,13 @@ export class MatriculasComponent implements OnInit {
 
   ngOnInit() {
     this.findAll();
+    this.findAllDisciplinas();
+  }
 
+  findAllDisciplinas() {
+    this.disciplinaService.findAll().subscribe((disciplinas: DisciplinaModel[]) => {
+      this.disciplinas = disciplinas;
+    }, error => console.error(error));
   }
 
   findAll() {
@@ -63,6 +75,47 @@ export class MatriculasComponent implements OnInit {
 
   goToEdit(m: MatriculaModel) {
     this.router.navigate(['/matriculas/edita', m.id]);
+  }
+
+  filtraPorDisciplina(e: MouseEvent, d: DisciplinaModel) {
+    const div: any = e.target;
+    if (this.divAnterior != null) {
+      this.divAnterior.classList.remove('bg-primary');
+      this.divAnterior.classList.remove('text-light');
+    }
+    this.divAnterior = div;
+    if (div.classList.contains('bg-primary')) {
+      div.classList.remove('bg-primary');
+      div.classList.remove('text-light');
+    } else {
+      div.classList.add('bg-primary');
+      div.classList.add('text-light');
+    }
+    this.disciplina = d;
+    this.findAllByNomeCurso();
+  }
+
+  filtraTodos(e: any) {
+    const div: any = e.target;
+    if (this.divAnterior != null) {
+      this.divAnterior.classList.remove('bg-primary');
+      this.divAnterior.classList.remove('text-light');
+    }
+    this.divAnterior = div;
+    if (div.classList.contains('bg-primary')) {
+      div.classList.remove('bg-primary');
+      div.classList.remove('text-light');
+    } else {
+      div.classList.add('bg-primary');
+      div.classList.add('text-light');
+    }
+    this.findAll();
+  }
+
+  findAllByNomeCurso() {
+    this.matriculaService.findAllByNomeCurso(this.disciplina.nome).subscribe((matriculas: MatriculaModel[]) => {
+      this.matriculas = matriculas;
+    }, error => console.error(error));
   }
 
 
