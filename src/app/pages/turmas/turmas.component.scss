@@ -11,7 +11,12 @@
     }
     i.fa-pencil {
       &:hover{
-        background-color: blue !important;
+        background-color: rgb(1, 206, 11) !important;
+      }
+    }
+    i.fa-cadenlar {
+      &:hover{
+        background-color: rgb(91, 189, 255) !important;
       }
     }
   }

@@ -16,7 +16,8 @@
                 {{ dha.dia }} às {{ dha.hora }} <span *ngIf="!(i === t.diaHoraAulas.length - 1)">e</span>
               </span>
               <span><i (click)="initRemove(t)" class="fa fa-trash red-bg" style="left: unset; right: 20px;"></i></span>
-              <span><i (click)="initEdit(t)" class="fa fa-pencil blue-bg" style="left: unset; right: 60px;"></i></span>
+              <span><i (click)="initEdit(t)" class="fa fa-pencil green-bg" style="left: unset; right: 60px;"></i></span>
+              <span><i (click)="abrirTurma(t)" class="fa fa-calendar skyblue-bg" style="left: unset; right: 100px;"></i></span>
             </div>
        </div>
     </div>

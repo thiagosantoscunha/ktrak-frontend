@@ -1,0 +1,24 @@
+<app-header-content-page [title]="'Abrir turma'" [subtitle]="'Preencha os campos para inserir o periodo do semestre. Vale ressaltar que depois de abrir, não é possivel fechar.'">
+  </app-header-content-page>
+
+<div class="area-form row">
+  <div class="col-12 mb-5">
+    <h6>Abrir a turma da matéria de {{ turma.disciplina.nome }} com o professor {{ turma.professor.nome }}</h6>
+  </div>
+  <div class="col-6">
+    <div class="form-group">
+      <label>Data de Inicio</label>
+      <input type="date" class="form-control" [(ngModel)]="semestre.dataInicio" placeholder="Selecione a data">
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-group">
+      <label>Data de Fim</label>
+      <input type="date" class="form-control" [(ngModel)]="semestre.dataFim" placeholder="Selecione a data">
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" (click)="openTurma()">Abrir Turma</button>
+  </div>
+</div>
+<app-alert-dialog #alert></app-alert-dialog>

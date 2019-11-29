@@ -58,4 +58,9 @@ export class TurmasComponent implements OnInit {
     this.router.navigate(['/turmas/edita', turma.id]);
   }
 
+  abrirTurma(t: TurmaModel) {
+    this.router.navigate(['/turmas/abrir', t.id]);
+  }
+
+
 }
