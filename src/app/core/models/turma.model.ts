@@ -8,4 +8,5 @@ export class TurmaModel {
   disciplina: DisciplinaModel;
   diaHoraAulas: DiaHoraAula[];
   isSelected = false;
+  isAberta = false;
 }

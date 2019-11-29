@@ -13,6 +13,10 @@ import { LoggedInGuard } from './security/loggedin.guard';
 import { DisciplinasComponent } from './pages/disciplinas/disciplinas.component';
 import { MatriculasFormComponent } from './pages/matriculas/matriculas-form/matriculas-form.component';
 import { QrpageComponent } from './pages/qrpage/qrpage.component';
+import { TurmaAbrirFormComponent } from './pages/turmas/turma-abrir-form/turma-abrir-form.component';
+import { DiasLetivosComponent } from './pages/dias-letivos/dias-letivos.component';
+import { RecessosComponent } from './pages/recessos/recessos.component';
+import { RecessosFormComponent } from './pages/recessos/recessos-form/recessos-form.component';
 
 const routes: Routes = [
   {
@@ -72,6 +76,11 @@ const routes: Routes = [
     canLoad: [LoggedInGuard]
   },
   {
+    path: 'turmas/abrir/:id',
+    component: TurmaAbrirFormComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
     path: 'turmas/edita/:id',
     component: TurmaFormComponent,
     canLoad: [LoggedInGuard]
@@ -79,6 +88,26 @@ const routes: Routes = [
   {
     path: 'qrcode',
     component: QrpageComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'dias-letivos',
+    component: DiasLetivosComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'recessos',
+    component: RecessosComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'recessos/novo',
+    component: RecessosFormComponent,
+    canLoad: [LoggedInGuard]
+  },
+  {
+    path: 'recessos/edita/:id',
+    component: RecessosFormComponent,
     canLoad: [LoggedInGuard]
   }
 ];

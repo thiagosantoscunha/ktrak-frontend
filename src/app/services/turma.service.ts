@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TurmaModel } from '../core/models/turma.model';
+import { TurmaSemestreModel } from '../core/models/turma-semestre.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,10 @@ export class TurmaService {
 
   remove(id: number): Observable<any> {
     return this.http.delete<any>(this.baseUrl + `?id=${id}`);
+  }
+
+  openInSemetre(model: TurmaSemestreModel): Observable<TurmaModel> {
+    return this.http.post<TurmaModel>(this.baseUrl + '/montaTurmaNoSemestre', model);
   }
 
 }

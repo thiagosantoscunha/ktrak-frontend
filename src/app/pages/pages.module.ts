@@ -9,6 +9,10 @@ import { ProfessoresModule } from './professores/professores.module';
 import { LoginModule } from './login/login.module';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
 import { TurmasModule } from './turmas/turmas.module';
+import { DiasLetivosModule } from './dias-letivos/dias-letivos.module';
+import { RecessosModule } from './recessos/recessos.module';
+
+
 @NgModule({
   declarations: [],
   imports: [
@@ -21,7 +25,9 @@ import { TurmasModule } from './turmas/turmas.module';
     AlunoDetailModule,
     DisciplinasModule,
     TurmasModule,
-    QrpageModule
+    QrpageModule,
+    DiasLetivosModule,
+    RecessosModule
   ]
 })
 export class PagesModule { }
