@@ -1,0 +1,43 @@
+<app-header-content-page [title]="'Dias Letivos'" [subtitle]="'Clique na turma para filtrar os dias letivos'">
+</app-header-content-page>
+
+
+<div class="row" *ngIf="turmaNaoEstaVazia()">
+    <div class="col-3" *ngFor="let t of turmas">
+      <div class="widget" [ngClass]="{'active': t.isSelected }" (click)="setTurma(t)">
+          <div class="quick-report-widget">
+              <span>{{ t.disciplina.nome }}</span>
+              <h4>{{ getFirstLastName(t.professor.nome) }}</h4>
+              <i class="fa" [ngClass]="{ 'silver-bg': !t.isSelected, 'green-bg': t.isSelected, 'fa-check': t.isSelected, 'circle-o': !t.isSelected }"></i>
+              <h5>123 já fizeram esta disciplina</h5>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5" *ngIf="temDiaLetivo()">
+    <h6>Dias letivos da turma de {{ turma.disciplina.nome }} do professor {{ turma.professor.nome}}</h6>
+    <div class="col-12">
+      <table class="table mt-5">
+          <thead>
+            <tr>
+              <th scope="row"></th>
+              <th>Data</th>
+              <th>Dia da semana</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of diasLetivos">
+              <th scope="row">Data</th>
+              <td>{{ d.data | date : 'dd/MM/yyyy' }}</td>
+              <td>{{ d.data | date : 'EEEE' }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+  <div class="row mt-5" *ngIf="!temDiaLetivo()">
+    <div class="col-12">
+      <div class="alert alert-warning">Esta turma ainda não foi aberta ou você ainda não selecionou nenhuma turma</div>
+    </div>
+  </div>
