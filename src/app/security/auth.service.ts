@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   login(login: Login) {
-    this.http.post(`${this.baseHref}/login`, login).subscribe((resp: any) => {
+    this.http.post(`${this.baseHref}/v1/auth/login`, login).subscribe((resp: any) => {
       localStorage.setItem('jwt', resp.token);
       this.router.navigate(['/alunos']);
       if (resp.token != null && resp.token !== undefined) {
