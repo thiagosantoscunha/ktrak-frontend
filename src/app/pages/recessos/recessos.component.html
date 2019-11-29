@@ -1,0 +1,37 @@
+<app-header-content-page [title]="'Recessos'" [subtitle]="'Lista de Recessos... dias que não terão aula durante a semana. Cadastrar um novo recesso é bom antes de registrar as turmas'">
+    
+    <div class="col-md-9 column">
+        <div class="quick-btn-title">
+            <a href="javascript: void()" (click)="novoRecesso()"><i class="fa fa-plus"></i> Cadastrar novo Recesso</a>
+        </div>
+   </div>
+</app-header-content-page>
+
+
+<div class="area row mt-5" *ngIf="temRecesso()">
+
+    <div class="col-12">
+      <table class="table mt-5">
+          <thead>
+            <tr>
+              <th scope="row"></th>
+              <th>Dia</th>
+              <th>Dia da semana</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of recessos">
+              <th scope="row">Data</th>
+              <td>{{ r.data | date : 'dd/MM/yyyy' }}</td>
+              <td>{{ r.data | date : 'EEEE' }}</td>
+              <td>
+                <button class="btn btn-danger mr-2" (click)="remove(r)"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <app-alert-dialog #alert></app-alert-dialog>
