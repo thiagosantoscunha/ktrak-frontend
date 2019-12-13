@@ -3,13 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "postinstall": "ng build --aot --prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "@angular/animations": "~8.0.0",
     "@angular/common": "~8.0.0",
@@ -23,6 +28,7 @@
     "@types/lodash": "^4.14.149",
     "angularx-qrcode": "^1.7.0-beta.5",
     "bootstrap": "^4.3.1",
+    "express": "^4.17.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "rxjs": "~6.4.0",
