@@ -24,6 +24,7 @@ export class AlunosComponent implements OnInit {
   isSave = false;
   alunos: AlunoModel[];
   aluno: AlunoModel;
+  show: boolean;
 
   @ViewChild('modalForm', { static: true })
   modalForm: ModalComponent;
