@@ -20,7 +20,7 @@ export class ProfessoresComponent implements OnInit {
 
   professores: ProfessorModel[];
   professor: ProfessorModel;
-
+  show: boolean;
 
   professorForm: FormGroup;
 

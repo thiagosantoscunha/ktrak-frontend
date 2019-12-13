@@ -15,6 +15,7 @@ export class DisciplinasComponent implements OnInit {
 
   disciplinas: DisciplinaModel[];
   disciplina: DisciplinaModel;
+  show: boolean;
 
   @ViewChild('modalForm', { static: true })
   modalForm: ModalComponent;
